@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flappy Bird</title>
+    <style>
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: url("flappybirdbg.png") no-repeat;
+            background-size: cover;
+        }
+
+        #restartButton {
+            display: none;
+            margin: 10px auto;
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="gameCanvas" width="360" height="640"></canvas>
+<button id="restartButton">Restart Game</button>
+
+<script>
+    let BoardWid = 360;
+    let BoardH = 640;
+
+    let canvas = document.getElementById("gameCanvas");
+    let ctx = canvas.getContext("2d");
+
+    // Images
+    let BackroundImg = new Image();
+    BackroundImg.src = "flappybirdbg.png";
+
+    let BirdImg = new Image();
+    BirdImg.src = "flappybird.png";
+
+    let topPip = new Image();
+    topPip.src = "toppipe.png";
+
+    let botPip = new Image();
+    botPip.src = "bottompipe.png";
+
+    // Bird variables
+    let Birdx = BoardWid / 8;
+    let Birdy = BoardH / 2;
+    let BW = 50;
+    let BH = 25;
+
+    let VX = -4;
+    let VY = 0;
+    let grav = 1;
+    let pipes = [];
+    let GameOver = false;
+    let score = 0;
+    let highScore = 0;
+
+    let restartButton = document.getElementById("restartButton");
+
+    function Pipe(img, x, y) {
+        return {
+            img: img,
+            x: x,
+            y: y,
+            width: 64,
+            height: 512,
+            passed: false
+        };
+    }
+
+    function placePipes() {
+        let PipeH = 512;
+        let randomY = -PipeH / 4 - Math.floor(Math.random() * PipeH / 2);
+        let OS = BoardH / 4;
+
+        let top = Pipe(topPip, BoardWid, randomY);
+        let bottom = Pipe(botPip, BoardWid, randomY + PipeH + OS);
+
+        pipes.push(top);
+        pipes.push(bottom);
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, BoardWid, BoardH);
+
+        // Bird
+        ctx.drawImage(BirdImg, Birdx, Birdy, BW, BH);
+
+        // Pipes
+        for (let i = 0; i < pipes.length; i++) {
+            let pipe = pipes[i];
+            ctx.drawImage(pipe.img, pipe.x, pipe.y, pipe.width, pipe.height);
+        }
+
+        // Score display
+        ctx.fillStyle = "white";
+        ctx.font = "32px Arial";
+
+        if (GameOver) {
+            // Top box: Game Over
+            ctx.fillStyle = "white";
+            ctx.fillRect(BoardWid / 2 - 120, BoardH / 4 - 50, 240, 100);
+            ctx.fillStyle = "black";
+
+            let gameOverText = "Game Over";
+            let gameOverWidth = ctx.measureText(gameOverText).width;
+            ctx.fillText(gameOverText, (BoardWid - gameOverWidth) / 2, BoardH / 4 + 9);
+
+            // Bottom box: Score and High Score
+            ctx.fillStyle = "white";
+            ctx.fillRect(BoardWid / 2 - 120, BoardH - 150, 240, 100);
+            ctx.fillStyle = "black";
+
+            let scoreText = "Score: " + Math.floor(score);
+            let scoreWidth = ctx.measureText(scoreText).width;
+            ctx.fillText(scoreText, (BoardWid - scoreWidth) / 2, BoardH - 110);
+
+            let highScoreText = "High Score: " + highScore;
+            let highScoreWidth = ctx.measureText(highScoreText).width;
+            ctx.fillText(highScoreText, (BoardWid - highScoreWidth) / 2, BoardH - 70);
+        } else {
+            // Live display during game
+            let liveScoreText = Math.floor(score).toString();
+            let liveScoreWidth = ctx.measureText(liveScoreText).width;
+            ctx.fillText(Math.floor(score), 10, 35);
+
+            let liveHighScoreText = "High: " + highScore;
+            let liveHighScoreWidth = ctx.measureText(liveHighScoreText).width;
+            ctx.fillText("High: " + highScore, BoardWid - 115, 35);
+        }
+    }
+
+    function move() {
+        VY += grav;
+        Birdy += VY;
+        if (Birdy > BoardH) GameOver = true;
+
+        for (let i = 0; i < pipes.length; i++) {
+            let pipe = pipes[i];
+            pipe.x += VX;
+
+            if (collision(pipe)) {
+                GameOver = true;
+            }
+
+            if (!pipe.passed && Birdx > pipe.x + pipe.width) {
+                pipe.passed = true;
+                score += 0.5;
+
+                if (score > highScore) {
+                    highScore = Math.floor(score);
+                }
+            }
+        }
+
+        pipes = pipes.filter(pipe => pipe.x + pipe.width > 0);
+        if (score > highScore) {
+            highScore = Math.floor(score);
+        }
+    }
+
+    function collision(pipe) {
+        return Birdx < pipe.x + pipe.width &&
+               Birdx + BW > pipe.x &&
+               Birdy < pipe.y + pipe.height &&
+               Birdy + BH > pipe.y;
+    }
+
+    function gameLoop() {
+        move();
+        draw();
+        if (GameOver) {
+            restartButton.style.display = "block";
+        } else {
+            requestAnimationFrame(gameLoop);
+        }
+    }
+
+    document.addEventListener("keydown", function(e) {
+        if (e.code === "Space" && !GameOver) {
+            VY = -9;
+        }
+    });
+
+    restartButton.addEventListener("click", function() {
+        Birdy = BoardH / 2;
+        VY = 0;
+        pipes = [];
+        score = 0;
+        GameOver = false;
+        restartButton.style.display = "none";
+        gameLoop();
+    });
+
+    setInterval(placePipes, 1500);
+    gameLoop();
+</script>
+
+</body>
+</html>
