@@ -2,23 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Manraj Banga — My Projects</title>
+    <title>Manraj Banga — Portfolio</title>
     <style>
-        body { font-family: Arial; background: #f4f4f4; margin: 0; padding: 20px; }
-        .project { background: #fff; padding: 20px; margin-bottom: 15px; border-radius: 8px; }
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+        header { background: #333; color: white; padding: 20px; text-align: center; }
+        section { max-width: 900px; margin: 20px auto; background: white; padding: 20px; border-radius: 8px; }
+        h1, h2 { margin-top: 0; }
+        .project { margin-bottom: 20px; }
         .project img { max-width: 200px; display: block; margin-bottom: 10px; }
+        footer { text-align: center; padding: 20px; color: #555; }
+        a.button { display: inline-block; padding: 10px 15px; background: #333; color: white; text-decoration: none; border-radius: 5px; }
+        a.button:hover { background: #555; }
     </style>
 </head>
 <body>
-    <h1>My Projects</h1>
+
+<header>
+    <h1>Manraj Banga</h1>
+    <p>Software Developer | Java Enthusiast | Passionate About Building Cool Stuff</p>
+</header>
+
+<section>
+    <h2>About Me</h2>
+    <p>
+        Hi! I'm Manraj, a software developer with a strong interest in Java, game development, and creative coding. 
+        I love building projects that challenge me and help me grow, and I'm always exploring new tools and technologies. 
+        On this page, you'll find some of my personal projects and demos.
+    </p>
+</section>
+
+<section>
+    <h2>Projects</h2>
 
     <div class="project">
-        <h2>Flappy Bird (Java)</h2>
+        <h3>Flappy Bird (Java)</h3>
         <img src="projects/flappybird.png" alt="Flappy Bird Screenshot">
-        <p>A Java game inspired by Flappy Bird, written using Swing.</p>
-        <a href="projects/flappybird.jar" download>Download Demo (.jar)</a>
-        <a href="https://github.com/YOUR_GITHUB_USERNAME/flappybird" target="_blank">View Code on GitHub</a>
+        <p>
+            A Java-based desktop game inspired by Flappy Bird, built using Swing. 
+            Includes custom graphics and smooth gameplay.
+        </p>
+        <a class="button" href="projects/flappybird.jar" download>Download Game (.jar)</a>
+        <a class="button" href="https://github.com/mbanga11/flappybird" target="_blank">View Code on GitHub</a>
     </div>
+
+    <!-- Add more project blocks here as you build new ones -->
+</section>
+
+<footer>
+    &copy; 2025 Manraj Banga — Connect with me on 
+    <a href="https://github.com/mbanga11" target="_blank">GitHub</a>
+</footer>
 
 </body>
 </html>
