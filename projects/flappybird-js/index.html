@@ -129,7 +129,7 @@
 
             let liveHighScoreText = "High: " + highScore;
             let liveHighScoreWidth = ctx.measureText(liveHighScoreText).width;
-            ctx.fillText("High: " + highScore, BoardWid - 115, 35);
+            ctx.fillText("High: " + highScore, BoardWid - 120, 35);
         }
     }
 
@@ -183,6 +183,11 @@
         if (e.code === "Space" && !GameOver) {
             VY = -9;
         }
+    });
+    document.addEventListener("touchstart", function(e) {
+    if (!GameOver) {
+        VY = -9;
+    }
     });
 
     restartButton.addEventListener("click", function() {
