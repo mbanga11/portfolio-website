@@ -184,11 +184,14 @@
             VY = -9;
         }
     });
-    document.addEventListener("touchstart", function(e) {
+    canvas.addEventListener("touchstart", function(e) {
     if (!GameOver) {
         VY = -9;
+    } else if (restartButton.style.display === "block") {
+        restartButton.click(); // optional: tap canvas to restart
     }
-    });
+});
+
 
     restartButton.addEventListener("click", function() {
         Birdy = BoardH / 2;
