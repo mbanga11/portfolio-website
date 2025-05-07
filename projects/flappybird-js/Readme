@@ -1,0 +1,45 @@
+# 🐦 Flappy Bird - JavaScript Clone (Seahawks Edition)
+
+Welcome to a personalized version of the classic Flappy Bird — rebuilt from scratch using HTML5 Canvas and JavaScript! Featuring a custom **Seattle Seahawks**-inspired look, this game is designed to be simple, responsive, and fun.
+
+---
+
+## 🎮 Gameplay
+
+- Press **Spacebar** on desktop or **Tap** on mobile to make the bird flap.
+- Avoid the top and bottom pipes.
+- Score increases every time you successfully fly through a pipe pair.
+- The game ends when the bird collides or falls below the screen.
+- A "Game Over" screen shows your score and high score.
+
+---
+
+## 🧩 Features
+
+✅ Smooth jump mechanics with gravity  
+✅ Procedurally generated pipes every 1.5 seconds  
+✅ High score tracking (per session)  
+✅ Mobile/touchscreen compatibility  
+✅ Game restart functionality  
+✅ Pixelated graphics for a retro feel  
+✅ Custom art for bird, pipes, and background  
+✅ Seahawks theme & colors for that Seattle pride 🟦💚
+
+---
+
+## 🖼 Assets
+
+All custom visual elements used in the game:
+
+| File              | Description                |
+|------------------|----------------------------|
+| `flappybird.png` | The main bird sprite       |
+| `toppipe.png`    | Top pipe image             |
+| `bottompipe.png` | Bottom pipe image          |
+| `flappybirdbg.png` | Game background image    |
+| `index.html`     | Game logic & rendering     |
+
+---
+
+## 🏗️ Project Structure
+

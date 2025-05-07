@@ -1,18 +1,30 @@
-## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+# 🐦 Flappy Bird Java Edition (Seattle Seahawks Theme)
 
-## Folder Structure
+This is a desktop version of Flappy Bird, built in Java using `JFrame` and `JPanel`. The project includes a fully functional graphical game loop, custom Seattle Seahawks-themed artwork, and interactive controls. Playable with the spacebar and featuring restart functionality.
 
-The workspace contains two folders by default, where:
+---
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## 🧠 Summary
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- **Language:** Java  
+- **UI Library:** Swing (`JFrame`, `JPanel`, `Timer`)  
+- **Rendering:** `paintComponent(Graphics g)`  
+- **User Input:** `KeyListener`  
+- **Custom Art:** Seahawks-inspired graphics and theme  
+- **Game Type:** Desktop app (not web-based)
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+---
 
-## Dependency Management
+## 🎮 How to Play
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- Press `SPACE` to flap and keep the bird flying.
+- Avoid hitting the top and bottom pipes.
+- The game ends if you collide or fall.
+- Score increases by 1 every time you pass a pipe pair.
+- Hit "Restart Game" to try again.
+
+---
+
+## 📁 Project Structure
+
