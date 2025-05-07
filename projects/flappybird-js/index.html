@@ -55,7 +55,6 @@
     let GameOver = false;
     let score = 0;
     let highScore = 0;
-    let gameStarted = false;
 
     let restartButton = document.getElementById("restartButton");
 
@@ -136,38 +135,25 @@
     }
 
     function gameLoop() {
-        if (!GameOver) {
-            move();
-            draw();
-            requestAnimationFrame(gameLoop);
-        } else {
-            draw();
+        move();
+        draw();
+        if (GameOver) {
             restartButton.style.display = "block";
+        } else {
+            requestAnimationFrame(gameLoop);
         }
     }
 
-    function startGame() {
-        if (!gameStarted) {
-            setInterval(placePipes, 1500);
-            gameLoop();
-            gameStarted = true;
-        }
-    }
-
-    // Controls
     document.addEventListener("keydown", function(e) {
         if (e.code === "Space" && !GameOver) {
             VY = -9;
-            startGame();
         }
     });
 
-    canvas.addEventListener("touchstart", function(e) {
+    // ✅ Touchscreen tap support (for phones)
+    canvas.addEventListener("touchstart", function() {
         if (!GameOver) {
             VY = -9;
-            startGame();
-        } else if (restartButton.style.display === "block") {
-            restartButton.click();
         }
     });
 
@@ -178,8 +164,11 @@
         score = 0;
         GameOver = false;
         restartButton.style.display = "none";
-        gameStarted = false;
+        gameLoop();
     });
+
+    setInterval(placePipes, 1500);
+    gameLoop();
 </script>
 
 </body>
