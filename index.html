@@ -5,6 +5,24 @@
     <title>Manraj Banga — Portfolio</title>
     <style>
         body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+        nav {
+            background-color: #222;
+            color: white;
+            padding: 12px 20px;
+            text-align: left;
+        }
+
+        nav a {
+            color: white;
+            margin-right: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
         header { background: #333; color: white; padding: 20px; text-align: center; }
         section { max-width: 900px; margin: 20px auto; background: white; padding: 20px; border-radius: 8px; }
         h1, h2, h3 { margin-top: 0; }
@@ -17,6 +35,12 @@
     </style>
 </head>
 <body>
+
+<!-- 🔗 Navigation Bar -->
+<nav>
+    <a href="index.html">Home</a>
+    <a href="secret-todo/index.html">To-Do List</a>
+</nav>
 
 <header>
     <h1>Manraj Banga</h1>
@@ -74,121 +98,104 @@
     <div class="project">
         <h3>Flappy Bird (Java Version)</h3>
         <p>A desktop version of the classic Flappy Bird game built using Java and custom graphics logic.</p>
-      
         <ul>
-          <li>Used Java 2D graphics to draw the bird, pipes, and background animations</li>
-          <li>Implemented collision detection between the bird and pipes or ground</li>
-          <li>Controlled gravity and jump physics with a basic game loop and timers</li>
-          <li>Tracked score based on pipe obstacles passed by the bird</li>
-          <li>Used object-oriented principles to manage game state and rendering</li>
+            <li>Used Java 2D graphics to draw the bird, pipes, and background animations</li>
+            <li>Implemented collision detection between the bird and pipes or ground</li>
+            <li>Controlled gravity and jump physics with a basic game loop and timers</li>
+            <li>Tracked score based on pipe obstacles passed by the bird</li>
+            <li>Used object-oriented principles to manage game state and rendering</li>
         </ul>
-      
         <p><strong>Technologies Used:</strong><br>
         Java, 2D Graphics, Object-Oriented Design, Game Loop Logic</p>
         <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/flappybird-java" target="_blank">View Java Code on GitHub</a>
-      </div>
-      
+    </div>
+
     <div class="project">
         <h3>Flappy Bird (JavaScript Version)</h3>
         <p>A browser-based clone of Flappy Bird built entirely with HTML Canvas and JavaScript.</p>
-      
         <ul>
-          <li>Drew game elements using the HTML5 canvas API and JavaScript animation frames</li>
-          <li>Implemented gravity, jump movement, and collision logic between bird and pipes</li>
-          <li>Included score tracking and restart functionality after collision</li>
-          <li>Created responsive canvas rendering for smooth gameplay</li>
-          <li>Designed to run fully in-browser with no dependencies</li>
+            <li>Drew game elements using the HTML5 canvas API and JavaScript animation frames</li>
+            <li>Implemented gravity, jump movement, and collision logic between bird and pipes</li>
+            <li>Included score tracking and restart functionality after collision</li>
+            <li>Created responsive canvas rendering for smooth gameplay</li>
+            <li>Designed to run fully in-browser with no dependencies</li>
         </ul>
-      
         <p><strong>Technologies Used:</strong><br>
         JavaScript, HTML Canvas, Game Development, Front-End Animation</p>
         <iframe src="projects/flappybird-js/index.html" width="400" height="750" style="border:none;"></iframe>
         <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/flappybird-js" target="_blank">View JavaScript Code on GitHub</a>
-      </div>
+    </div>
 
     <div class="project">
         <h3>Tic Tac Toe Simulator</h3>
         <p>A full simulation of all <strong>255,168</strong> possible Tic Tac Toe games using recursion and object-oriented programming in Java.</p>
-      
         <ul>
-          <li>Built a reusable Board class that:
-            <ul>
-              <li>Handles move placement, turn tracking, and win detection</li>
-              <li>Generates available moves using 2D arrays</li>
-              <li>Prevents privacy leaks with deep copying</li>
-            </ul>
-          </li>
-          <li>Uses recursion to explore all possible game outcomes through backtracking</li>
-          <li>Simulates each game step-by-step, updating and printing the board in real time</li>
-          <li>Outputs total game statistics:
-            <ul>
-              <li>X wins</li>
-              <li>O wins</li>
-              <li>Draws</li>
-            </ul>
-          </li>
+            <li>Built a reusable Board class that:
+                <ul>
+                    <li>Handles move placement, turn tracking, and win detection</li>
+                    <li>Generates available moves using 2D arrays</li>
+                    <li>Prevents privacy leaks with deep copying</li>
+                </ul>
+            </li>
+            <li>Uses recursion to explore all possible game outcomes through backtracking</li>
+            <li>Simulates each game step-by-step, updating and printing the board in real time</li>
+            <li>Outputs total game statistics:
+                <ul>
+                    <li>X wins</li>
+                    <li>O wins</li>
+                    <li>Draws</li>
+                </ul>
+            </li>
         </ul>
-      
         <p><strong>Technologies Used:</strong><br>
         Java, OOP (Encapsulation, Deep Copy), Recursion, 2D Arrays, Terminal I/O</p>
-      
-        <p>This project demonstrates strong problem-solving, class design, and recursive thinking—while also producing clean, testable output for gameplay analysis.</p>
         <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/TicTacToe" target="_blank">View Java Code on GitHub</a>
-      </div>
+    </div>
 
-      <div class="project">
+    <div class="project">
         <h3>Animated Shape Simulation</h3>
         <p>A dynamic Java program where multiple custom shapes bounce around the screen, reacting to walls and gravity in real time.</p>
-      
         <ul>
-          <li>Built 4+ shape classes that inherit from a shared abstract Shape base class</li>
-          <li>Used encapsulation, overridden methods, and super constructor for proper OOP structure</li>
-          <li>Implemented a MyPanel controller to randomly spawn shapes and manage a dynamic shape menu</li>
-          <li>Drew each shape using Java’s Graphics API, including rectangles, ovals, and lines</li>
-          <li>Showcases real-time rendering, class inheritance, and GUI control logic</li>
+            <li>Built 4+ shape classes that inherit from a shared abstract Shape base class</li>
+            <li>Used encapsulation, overridden methods, and super constructor for proper OOP structure</li>
+            <li>Implemented a MyPanel controller to randomly spawn shapes and manage a dynamic shape menu</li>
+            <li>Drew each shape using Java’s Graphics API, including rectangles, ovals, and lines</li>
+            <li>Showcases real-time rendering, class inheritance, and GUI control logic</li>
         </ul>
-      
         <p><strong>Technologies Used:</strong><br>
         Java, Object-Oriented Programming (Inheritance, Polymorphism), Graphics API, Encapsulation, GUI Logic</p>
         <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/Shape" target="_blank">View Java Code on GitHub</a>
-      </div>
-      
-      <div class="project">
+    </div>
+
+    <div class="project">
         <h3>Java GUI Calculator (Shunting Yard)</h3>
         <p>An advanced calculator app featuring two modes: a basic calculator and one using the Shunting Yard algorithm for infix-to-postfix conversion and evaluation.</p>
-      
         <ul>
-          <li>Implemented a fully interactive Java Swing GUI with custom button styling and event handling</li>
-          <li>Supports complex math operations including exponentiation, square root, logarithms, and parentheses</li>
-          <li>Used queues and stacks to convert and evaluate expressions via Shunting Yard and Postfix Evaluator algorithms</li>
-          <li>Created a reusable Token system for parsing expressions and applied test-driven development practices</li>
-          <li>Includes a menu system to toggle between modes and run test suites interactively</li>
+            <li>Implemented a fully interactive Java Swing GUI with custom button styling and event handling</li>
+            <li>Supports complex math operations including exponentiation, square root, logarithms, and parentheses</li>
+            <li>Used queues and stacks to convert and evaluate expressions via Shunting Yard and Postfix Evaluator algorithms</li>
+            <li>Created a reusable Token system for parsing expressions and applied test-driven development practices</li>
+            <li>Includes a menu system to toggle between modes and run test suites interactively</li>
         </ul>
-      
         <p><strong>Technologies Used:</strong><br>
         Java, Swing, Stacks & Queues, Algorithm Design, Test Automation, Infix/Postfix Conversion</p>
         <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/Calc" target="_blank">View Java Code on GitHub</a>
-      </div>
+    </div>
 
-      <div class="project">
+    <div class="project">
         <h3>Greedy Robot Pathfinding Simulator</h3>
         <p>A C++ simulation that recursively finds all valid movement paths a robot can take to reach a treasure under specific movement rules.</p>
-      
         <ul>
-          <li>Implemented recursive backtracking to explore and count valid paths</li>
-          <li>Applied constraints like maximum steps in the same direction</li>
-          <li>Calculated shortest Manhattan distances to guide valid movement choices</li>
-          <li>Used separate header and source files for modular, reusable design</li>
-          <li>Processes command-line input with error handling and validation</li>
+            <li>Implemented recursive backtracking to explore and count valid paths</li>
+            <li>Applied constraints like maximum steps in the same direction</li>
+            <li>Calculated shortest Manhattan distances to guide valid movement choices</li>
+            <li>Used separate header and source files for modular, reusable design</li>
+            <li>Processes command-line input with error handling and validation</li>
         </ul>
-      
         <p><strong>Technologies Used:</strong><br>
         C++, Recursion, Pathfinding, Command-Line Tools, Header/Src File Separation</p>
         <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/Robot" target="_blank">View C++ Code on GitHub</a>
-      </div>
-      
-
-      
+    </div>
 </section>
 
 <section>
