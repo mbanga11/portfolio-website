@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Private To-Do List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <style>
+    #auth-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 100px;
+    }
+
+    #todo-container {
+      display: none;
+    }
+
+    nav {
+      background-color: #222;
+      color: white;
+      padding: 12px 20px;
+      text-align: left;
+    }
+
+    nav a {
+      color: white;
+      margin-right: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="index.html">To-Do List</a>
+  </nav>
+
+  <!-- Password Prompt -->
+  <div id="auth-screen">
+    <h2>This page is private</h2>
+    <input type="password" id="password-input" placeholder="Enter password" />
+    <button onclick="checkPassword()">Enter</button>
+    <p id="error-msg" style="color: red; display: none;">Incorrect password</p>
+  </div>
+
+  <!-- To-Do App Content (hidden until authenticated) -->
+  <div id="todo-container">
+    <div id="settings">
+      <label>
+        <input type="checkbox" id="dark-mode-toggle" />
+        Dark Mode
+      </label>
+    </div>
+
+    <h2>To-Do List</h2>
+    <input type="text" id="task-input" placeholder="Enter a new task" />
+
+    <div class="time-row">
+      <input type="text" id="start-time-input" placeholder="Start Time" />
+      <input type="text" id="due-time-input" placeholder="Due Time" />
+      <button onclick="addTask()">Add</button>
+    </div>
+
+    <ul id="task-list"></ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <script>
+    // 👇 SET YOUR PASSWORD HERE
+    const PASSWORD = "manraj123";
+
+    function checkPassword() {
+      const input = document.getElementById("password-input").value;
+      const error = document.getElementById("error-msg");
+      if (input === PASSWORD) {
+        document.getElementById("auth-screen").style.display = "none";
+        document.getElementById("todo-container").style.display = "block";
+        startTodoApp();
+      } else {
+        error.style.display = "block";
+      }
+    }
+
+    function startTodoApp() {
+      let tasks = [];
+      const darkToggle = document.getElementById("dark-mode-toggle");
+
+      flatpickr("#start-time-input", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: false
+      });
+
+      flatpickr("#due-time-input", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: false
+      });
+
+      const saved = localStorage.getItem("tasks");
+      if (saved) {
+        tasks = JSON.parse(saved);
+        tasks.sort((a, b) => a.due.localeCompare(b.due));
+        renderAllTasks();
+      }
+
+      const dark = localStorage.getItem("darkMode") === "true";
+      if (dark) {
+        document.body.classList.add("dark-mode");
+        darkToggle.checked = true;
+      }
+
+      darkToggle.addEventListener("change", () => {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", darkToggle.checked);
+      });
+
+      document.getElementById("task-input").addEventListener("keypress", function(e) {
+        if (e.key === "Enter") addTask();
+      });
+
+      window.addTask = function () {
+        const input = document.getElementById("task-input");
+        const startInput = document.getElementById("start-time-input");
+        const dueInput = document.getElementById("due-time-input");
+
+        const taskText = input.value.trim();
+        const startTime = startInput.value;
+        const dueTime = dueInput.value;
+
+        if (taskText === "") return;
+
+        const task = { text: taskText, start: startTime, due: dueTime, done: false };
+        tasks.push(task);
+        tasks.sort((a, b) => a.due.localeCompare(b.due));
+
+        saveTasks();
+        renderAllTasks();
+
+        input.value = "";
+        startInput.value = "";
+        dueInput.value = "";
+      };
+
+      function renderAllTasks() {
+        const taskList = document.getElementById("task-list");
+        taskList.innerHTML = "";
+        tasks.forEach(task => renderTask(task));
+      }
+
+      function formatTime(time) {
+        if (!time) return "--";
+        const [hourStr, minuteStr] = time.split(":");
+        let hour = parseInt(hourStr);
+        const minute = minuteStr;
+        const ampm = hour >= 12 ? "PM" : "AM";
+        hour = hour % 12 || 12;
+        return `${hour}:${minute} ${ampm}`;
+      }
+
+      function renderTask(task) {
+        const li = document.createElement("li");
+
+        const span = document.createElement("span");
+        span.textContent = task.text;
+        if (task.done) li.classList.add("done");
+
+        const timeInfo = document.createElement("div");
+        timeInfo.className = "time";
+        timeInfo.textContent = `Start: ${formatTime(task.start)} - Due: ${formatTime(task.due)}`;
+
+        const btnContainer = document.createElement("div");
+        btnContainer.className = "button-container";
+
+        const doneImg = document.createElement("img");
+        doneImg.src = "icons8-check-50.png";
+        doneImg.alt = "Done";
+        doneImg.style.width = "24px";
+        doneImg.style.height = "24px";
+
+        const doneBtn = document.createElement("button");
+        doneBtn.className = "done";
+        doneBtn.appendChild(doneImg);
+        doneBtn.onclick = (e) => {
+          e.stopPropagation();
+          task.done = !task.done;
+          li.classList.toggle("done", task.done);
+          saveTasks();
+        };
+
+        const deleteImg = document.createElement("img");
+        deleteImg.src = "icons8-close-window-50.png";
+        deleteImg.alt = "Delete";
+        deleteImg.style.width = "24px";
+        deleteImg.style.height = "24px";
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "delete";
+        deleteBtn.appendChild(deleteImg);
+        deleteBtn.onclick = (e) => {
+          e.stopPropagation();
+          li.remove();
+          tasks = tasks.filter(t => t !== task);
+          saveTasks();
+        };
+
+        btnContainer.appendChild(doneBtn);
+        btnContainer.appendChild(deleteBtn);
+
+        const leftPart = document.createElement("div");
+        leftPart.style.textAlign = "left";
+        leftPart.appendChild(span);
+        leftPart.appendChild(timeInfo);
+
+        li.appendChild(leftPart);
+        li.appendChild(btnContainer);
+
+        document.getElementById("task-list").appendChild(li);
+      }
+
+      function saveTasks() {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+      }
+    }
+  </script>
+</body>
+</html>
