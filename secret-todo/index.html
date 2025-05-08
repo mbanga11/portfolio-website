@@ -7,15 +7,11 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
   <style>
-    #auth-screen {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 100px;
-    }
-
-    #todo-container {
-      display: none;
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
     }
 
     nav {
@@ -35,6 +31,38 @@
     nav a:hover {
       text-decoration: underline;
     }
+
+    header {
+      background: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    #auth-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+
+    #todo-container {
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #555;
+    }
   </style>
 </head>
 <body>
@@ -45,21 +73,24 @@
     <a href="index.html">To-Do List</a>
   </nav>
 
-  <!-- Password Prompt -->
-  <div id="auth-screen">
+  <!-- Page Header -->
+  <header>
+    <h1>Manraj Banga</h1>
+    <p>Private To-Do List</p>
+  </header>
+
+  <!-- Password Section -->
+  <section id="auth-screen">
     <h2>This page is private</h2>
     <input type="password" id="password-input" placeholder="Enter password" />
     <button onclick="checkPassword()">Enter</button>
     <p id="error-msg" style="color: red; display: none;">Incorrect password</p>
-  </div>
+  </section>
 
-  <!-- To-Do App Content (hidden until authenticated) -->
-  <div id="todo-container">
-    <div id="settings">
-      <label>
-        <input type="checkbox" id="dark-mode-toggle" />
-        Dark Mode
-      </label>
+  <!-- To-Do App Section -->
+  <section id="todo-container">
+    <div id="settings" style="text-align: right;">
+      <label><input type="checkbox" id="dark-mode-toggle" /> Dark Mode</label>
     </div>
 
     <h2>To-Do List</h2>
@@ -72,12 +103,14 @@
     </div>
 
     <ul id="task-list"></ul>
-  </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Manraj Banga — <a href="mailto:manrajbanga@icloud.com">Contact</a>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
   <script>
-    // 👇 SET YOUR PASSWORD HERE
     const PASSWORD = "manraj123";
 
     function checkPassword() {
@@ -185,15 +218,10 @@
         const btnContainer = document.createElement("div");
         btnContainer.className = "button-container";
 
-        const doneImg = document.createElement("img");
-        doneImg.src = "icons8-check-50.png";
-        doneImg.alt = "Done";
-        doneImg.style.width = "24px";
-        doneImg.style.height = "24px";
-
         const doneBtn = document.createElement("button");
         doneBtn.className = "done";
-        doneBtn.appendChild(doneImg);
+        doneBtn.textContent = "✔";
+
         doneBtn.onclick = (e) => {
           e.stopPropagation();
           task.done = !task.done;
@@ -201,15 +229,10 @@
           saveTasks();
         };
 
-        const deleteImg = document.createElement("img");
-        deleteImg.src = "icons8-close-window-50.png";
-        deleteImg.alt = "Delete";
-        deleteImg.style.width = "24px";
-        deleteImg.style.height = "24px";
-
         const deleteBtn = document.createElement("button");
         deleteBtn.className = "delete";
-        deleteBtn.appendChild(deleteImg);
+        deleteBtn.textContent = "✖";
+
         deleteBtn.onclick = (e) => {
           e.stopPropagation();
           li.remove();
@@ -238,3 +261,4 @@
   </script>
 </body>
 </html>
+
