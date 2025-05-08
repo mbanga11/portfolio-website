@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List with Local Storage</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Flatpickr time picker styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <div id="todo-container">
+        <!-- Dark mode toggle -->
+        <div id="settings">
+            <label>
+                <input type="checkbox" id="dark-mode-toggle" />
+                Dark Mode
+            </label>
+        </div>
+
+        <h2>To-Do List</h2>
+
+        <!-- Task input field -->
+        <input type="text" id="task-input" placeholder="Enter a new task" />
+
+        <!-- Start/Due time + Add button row -->
+        <div class="time-row">
+            <input type="text" id="start-time-input" placeholder="Start Time" />
+            <input type="text" id="due-time-input" placeholder="Due Time" />
+            <button onclick="addTask()">Add</button>
+        </div>
+
+        <!-- Task list area -->
+        <ul id="task-list"></ul>
+    </div>
+
+    <!-- Flatpickr time picker script -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+        let tasks = [];
+
+        const darkToggle = document.getElementById("dark-mode-toggle");
+
+        // Initialize on page load
+        window.onload = () => {
+            // Apply flatpickr to both time inputs
+            flatpickr("#start-time-input", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                time_24hr: false
+            });
+
+            flatpickr("#due-time-input", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+                time_24hr: false
+            });
+
+            // Load saved tasks from localStorage
+            const saved = localStorage.getItem("tasks");
+            if (saved) {
+                tasks = JSON.parse(saved);
+                tasks.sort((a, b) => a.due.localeCompare(b.due));
+                renderAllTasks();
+            }
+
+            // Apply saved dark mode preference
+            const dark = localStorage.getItem("darkMode") === "true";
+            if (dark) {
+                document.body.classList.add("dark-mode");
+                darkToggle.checked = true;
+            }
+        };
+
+        // Handle dark mode toggle and save preference
+        darkToggle.addEventListener("change", () => {
+            document.body.classList.toggle("dark-mode");
+            localStorage.setItem("darkMode", darkToggle.checked);
+        });
+
+        // Allow pressing Enter in the task input to add the task
+        document.getElementById("task-input").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                addTask();
+            }
+        });
+
+        // Add a new task
+        function addTask() {
+            const input = document.getElementById("task-input");
+            const startInput = document.getElementById("start-time-input");
+            const dueInput = document.getElementById("due-time-input");
+
+            const taskText = input.value.trim();
+            const startTime = startInput.value;
+            const dueTime = dueInput.value;
+
+            if (taskText === "") return;
+
+            const task = { text: taskText, start: startTime, due: dueTime, done: false };
+            tasks.push(task);
+            tasks.sort((a, b) => a.due.localeCompare(b.due));
+
+            saveTasks();
+            renderAllTasks();
+
+            // Clear inputs
+            input.value = "";
+            startInput.value = "";
+            dueInput.value = "";
+        }
+
+        // Render all tasks from the task array
+        function renderAllTasks() {
+            const taskList = document.getElementById("task-list");
+            taskList.innerHTML = "";
+            tasks.forEach(task => renderTask(task));
+        }
+
+        // Convert time string (HH:MM) to formatted time with AM/PM
+        function formatTime(time) {
+            if (!time) return "--";
+            const [hourStr, minuteStr] = time.split(":");
+            let hour = parseInt(hourStr);
+            const minute = minuteStr;
+            const ampm = hour >= 12 ? "PM" : "AM";
+            hour = hour % 12 || 12;
+            return `${hour}:${minute} ${ampm}`;
+        }
+
+        // Render a single task into the list
+        function renderTask(task) {
+            const li = document.createElement("li");
+
+            const span = document.createElement("span");
+            span.textContent = task.text;
+            if (task.done) li.classList.add("done");
+
+            const timeInfo = document.createElement("div");
+            timeInfo.className = "time";
+            timeInfo.textContent = `Start: ${formatTime(task.start)} - Due: ${formatTime(task.due)}`;
+
+            const btnContainer = document.createElement("div");
+            btnContainer.className = "button-container";
+
+            // Done button (green check)
+            const doneImg = document.createElement("img");
+            doneImg.src = "icons8-check-50.png";
+            doneImg.alt = "Done";
+            doneImg.style.width = "24px";
+            doneImg.style.height = "24px";
+
+            const doneBtn = document.createElement("button");
+            doneBtn.className = "done";
+            doneBtn.appendChild(doneImg);
+            doneBtn.onclick = (e) => {
+                e.stopPropagation();
+                task.done = !task.done;
+                li.classList.toggle("done", task.done);
+                saveTasks();
+            };
+
+            // Delete button (red X)
+            const deleteImg = document.createElement("img");
+            deleteImg.src = "icons8-close-window-50.png";
+            deleteImg.alt = "Delete";
+            deleteImg.style.width = "24px";
+            deleteImg.style.height = "24px";
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.className = "delete";
+            deleteBtn.appendChild(deleteImg);
+            deleteBtn.onclick = (e) => {
+                e.stopPropagation();
+                li.remove();
+                tasks = tasks.filter(t => t !== task);
+                saveTasks();
+            };
+
+            // Assemble buttons and task block
+            btnContainer.appendChild(doneBtn);
+            btnContainer.appendChild(deleteBtn);
+
+            const leftPart = document.createElement("div");
+            leftPart.style.textAlign = "left";
+            leftPart.appendChild(span);
+            leftPart.appendChild(timeInfo);
+
+            li.appendChild(leftPart);
+            li.appendChild(btnContainer);
+
+            document.getElementById("task-list").appendChild(li);
+        }
+
+        // Save tasks array to localStorage
+        function saveTasks() {
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+    </script>
+</body>
+</html>
