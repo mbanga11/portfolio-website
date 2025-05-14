@@ -128,3 +128,36 @@ footer {
   background-color: #00bcd4;
   color: #fff;
 }
+
+
+.button {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #1f2f46;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s ease;
+}
+
+.button:hover {
+  background-color: #025c8c;
+}
+.project {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+.project-display {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.project-display .button {
+  display: inline-block;
+  margin-top: 15px;
+}
