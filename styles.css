@@ -1,79 +1,113 @@
+/* Base layout */
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    margin: 0;
-    padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: #f1f5f9; /* soft blue-gray */
+  margin: 0;
+  padding: 0;
+  color: #1e293b; /* slate-900 */
 }
 
 nav {
-    background-color: #222;
-    color: white;
-    padding: 12px 20px;
-    text-align: left;
+  background-color: #0f172a; /* deep navy */
+  color: white;
+  padding: 12px 20px;
+  text-align: left;
 }
 
 nav a {
-    color: white;
-    margin-right: 20px;
-    text-decoration: none;
-    font-weight: bold;
+  color: #f1f5f9;
+  margin-right: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
-    text-decoration: underline;
+  color: #38bdf8; /* sky blue */
+  text-decoration: underline;
 }
 
 header {
-    background: #333;
-    color: white;
-    padding: 20px;
-    text-align: center;
+  background: #1e3a8a; /* indigo-800 */
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2, h3 {
-    margin-top: 0;
-}
-
-.project, .job, .edu-entry {
-    margin-bottom: 20px;
-}
-
-.project img {
-    max-width: 200px;
-    display: block;
-    margin-bottom: 10px;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    color: #555;
-}
-
-a.button {
-    display: inline-block;
-    padding: 10px 15px;
-    background: #333;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-
-a.button:hover {
-    background: #555;
-}
-
-iframe {
-    display: block;
-    margin: 0 auto;
+  margin-top: 0;
+  color: #0f172a;
 }
 
 section {
-    max-width: 900px;
-    margin: 20px auto;
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  max-width: 900px;
+  margin: 30px auto;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.project, .job, .edu-entry {
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0; /* light border */
+}
+
+.project img {
+  max-width: 200px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #64748b; /* cool gray */
+}
+
+a.button {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #1d4ed8; /* blue-700 */
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+a.button:hover {
+  background: #2563eb; /* blue-600 */
+}
+
+iframe {
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+/* Skills list styling */
+ul {
+  padding-left: 1.2rem;
+}
+
+ul li {
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+/* Contact section */
+#contact ul li a {
+  color: #1e40af; /* blue-800 */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+#contact ul li a:hover {
+  color: #0284c7; /* sky-600 */
 }
