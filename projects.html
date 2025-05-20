@@ -29,116 +29,167 @@
   <h2>Projects</h2>
 
   <div class="project">
-    <h3>Flappy Bird (Java Version)</h3>
-    <p>A desktop version of the classic Flappy Bird game built using Java and custom graphics logic.</p>
-    <ul>
-      <li>Used Java 2D graphics to draw the bird, pipes, and background animations</li>
-      <li>Implemented collision detection and game loop logic</li>
-    </ul>
-    <p><strong>Technologies:</strong> Java, 2D Graphics</p>
-    <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/flappybird-java" target="_blank">View Java Code on GitHub</a>
-  </div>
+  <h3>Flappy Bird (Java Version)</h3>
+  <p>A desktop clone of the original Flappy Bird game developed in Java, featuring pixel-style graphics and full game mechanics. Built entirely using custom Java classes with OOP principles.</p>
+  <ul>
+    <li>Created a game window using `JFrame` and a custom game loop with `Timer`.</li>
+    <li>Designed and animated the bird character and obstacle pipes using `Graphics`.</li>
+    <li>Implemented physics-based gravity and flap mechanics for smooth movement.</li>
+    <li>Added real-time collision detection between the bird and pipes/ground.</li>
+    <li>Managed game states (start, play, game over) using boolean flags.</li>
+    <li>Handled sprite loading from `.png` assets and scaled them at runtime.</li>
+  </ul>
+  <p><strong>Technologies:</strong> Java, Swing/AWT, Object-Oriented Programming</p>
+  <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/flappybird-java" target="_blank">View Java Code on GitHub</a>
+</div>
+
 
   <div class="project">
-    <h3>Flappy Bird (JavaScript Version)</h3>
-    <p>A browser-based clone of Flappy Bird using HTML5 Canvas and JavaScript.</p>
-    <ul>
-      <li>Responsive gameplay, gravity simulation, restart and score tracking</li>
-    </ul>
-    <p><strong>Technologies:</strong> JavaScript, Canvas API</p>
-    <iframe src="projects/flappybird-js/index.html" width="400" height="750" style="border:none;" loading="lazy"></iframe>
-    <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/flappybird-js" target="_blank">View JS Code on GitHub</a>
-  </div>
+  <h3>Flappy Bird (JavaScript Version)</h3>
+  <p>A fully functional Flappy Bird clone built for the browser using HTML5 Canvas and vanilla JavaScript. Designed to be responsive and mobile-friendly with smooth game mechanics and score tracking.</p>
+  <ul>
+    <li>Rendered dynamic graphics using the Canvas API to animate the bird, pipes, and background.</li>
+    <li>Implemented gravity, jump mechanics, and continuous scrolling background.</li>
+    <li>Created hitbox-based collision detection between the bird and obstacles.</li>
+    <li>Added score tracking, high score saving, and a game-over UI with restart logic.</li>
+    <li>Enabled controls via keyboard and touchscreen (mobile support).</li>
+    <li>Used `requestAnimationFrame` for performance-optimized rendering.</li>
+  </ul>
+  <p><strong>Technologies:</strong> JavaScript, HTML5 Canvas, Responsive Design</p>
+  <iframe src="projects/flappybird-js/index.html" width="400" height="750" style="border:none;" loading="lazy"></iframe>
+  <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/flappybird-js" target="_blank">View JS Code on GitHub</a>
+</div>
 
-  <div class="project">
-    <h3>Tic Tac Toe Simulator</h3>
-    <p>Simulates all possible Tic Tac Toe games using recursion in Java.</p>
-    <ul>
-      <li>Recursive tree exploration, win/draw tracking</li>
-    </ul>
-    <p><strong>Technologies:</strong> Java, Recursion</p>
-    <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/TicTacToe" target="_blank">View Java Code</a>
-  </div>
 
-  <div class="project">
-    <h3>Animated Shape Simulation</h3>
-    <p>Java GUI shapes that bounce with real-time gravity and collision.</p>
-    <ul>
-      <li>Used OOP with inheritance and GUI drawing tools</li>
-    </ul>
-    <p><strong>Technologies:</strong> Java, OOP, GUI</p>
-    <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/Shape" target="_blank">View Java Code</a>
-  </div>
+<div class="project">
+  <h3>Tic Tac Toe Simulator</h3>
+  <p>A Java-based recursive simulation that explores all possible Tic Tac Toe game outcomes. Built to understand tree-based game state exploration and algorithm efficiency.</p>
+  <ul>
+    <li>Implemented a full game board and rules for X and O turns.</li>
+    <li>Used recursive backtracking to simulate every legal move from any game state.</li>
+    <li>Tracked win/draw outcomes by analyzing board states after each move sequence.</li>
+    <li>Optimized to avoid unnecessary recursion once a win state is found.</li>
+    <li>Designed for console output and testing of full decision trees.</li>
+  </ul>
+  <p><strong>Technologies:</strong> Java, Recursion, Game Simulation</p>
+  <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/TicTacToe" target="_blank">View Java Code</a>
+</div>
 
-  <div class="project">
-    <h3>Java GUI Calculator (Shunting Yard)</h3>
-    <p>Advanced calculator with infix-postfix logic and styled GUI.</p>
-    <ul>
-      <li>Shunting Yard Algorithm, Swing UI, token parsing</li>
-    </ul>
-    <p><strong>Technologies:</strong> Java, Swing, Algorithm Design</p>
-    <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/Calc" target="_blank">View Java Code</a>
-  </div>
 
-  <div class="project">
-    <h3>Greedy Robot Pathfinding Simulator</h3>
-    <p>Recursive C++ robot path simulation based on direction rules.</p>
-    <ul>
-      <li>Used backtracking and distance constraints</li>
-    </ul>
-    <p><strong>Technologies:</strong> C++, Recursion</p>
-    <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/Robot" target="_blank">View C++ Code</a>
-  </div>
+<div class="project">
+  <h3>Animated Shape Simulation</h3>
+  <p>A Java GUI animation that displays moving geometric shapes (circles, rectangles, squares, triangles) using object-oriented design. Each shape is defined as a subclass with its own drawing behavior.</p>
+  <ul>
+    <li>Built a class hierarchy with `Shape` as the abstract base and concrete subclasses like `Circle`, `Square`, `Triangle`, and `Rectangles`.</li>
+    <li>Used Java Swing (`JPanel`, `Timer`) to animate shapes in real time with smooth motion.</li>
+    <li>Randomized shape colors, positions, and directions at runtime for variety.</li>
+    <li>Implemented boundary detection to bounce shapes off panel edges.</li>
+    <li>Separation of concerns: rendering logic, animation logic, and data structure for shape state are modularized.</li>
+  </ul>
+  <p><strong>Technologies:</strong> Java, OOP, Swing, Real-Time Animation</p>
+  <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/Shape" target="_blank">View Java Code</a>
+</div>
 
-  <div class="project">
-    <h3>To-Do List (Web App)</h3>
-    <p>Interactive task manager with local storage and dark mode.</p>
-    <ul>
-      <li>Deadline filtering, Flatpickr, real-time DOM updates</li>
-    </ul>
-    <p><strong>Technologies:</strong> JS, CSS3, LocalStorage</p>
-    <iframe src="projects/todo-app/index.html" width="400" height="700" style="border:none;" loading="lazy"></iframe>
-    <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/todo-app" target="_blank">View JS Code</a>
-  </div>
 
-  <div class="project">
-    <h3>Smart Command Line Assistant (C++)</h3>
-    <p>Terminal-based C++ assistant with reminders, journaling, and app launching.</p>
-    <ul>
-      <li>Multi-threading, natural commands, system calls</li>
-    </ul>
-    <p><strong>Technologies:</strong> C++, File I/O, System APIs</p>
-    <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/smart-assistant" target="_blank">View C++ Code</a>
-  </div>
+<div class="project">
+  <h3>Java GUI Calculator (Shunting Yard)</h3>
+  <p>An advanced calculator that uses the Shunting Yard algorithm to convert infix expressions to postfix and evaluate them. Includes a fully interactive GUI built with Java Swing.</p>
+  <ul>
+    <li>Implemented the Shunting Yard algorithm to convert user-entered infix math expressions into postfix (Reverse Polish Notation).</li>
+    <li>Evaluated postfix expressions using a custom stack-based interpreter.</li>
+    <li>Built a clean and responsive GUI with buttons for digits, operators, and control functions (clear, equals, etc.).</li>
+    <li>Handled complex input validation and token parsing for multi-digit numbers and nested parentheses.</li>
+    <li>Included helper classes like `Token` and `PostFixEvaluator` to maintain modular and testable code.</li>
+    <li>Provided unit tests to verify correct conversion and evaluation of expressions.</li>
+  </ul>
+  <p><strong>Technologies:</strong> Java, Swing, Algorithm Design, Stack Evaluation</p>
+  <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/Calc" target="_blank">View Java Code</a>
+</div>
 
-  <div class="project">
+
+<div class="project">
+  <h3>Greedy Robot Pathfinding Simulator</h3>
+  <p>A recursive C++ program that finds all valid paths from a robot’s start location to a treasure, using directional rules and a movement constraint. Great example of backtracking with path pruning.</p>
+  <ul>
+    <li>Used Manhattan distance to guide path pruning and ensure efficient exploration.</li>
+    <li>Implemented recursive backtracking to explore only paths that reduce the distance to the treasure.</li>
+    <li>Added logic to limit how many steps the robot can take in the same direction consecutively (e.g., max 2 north moves).</li>
+    <li>Printed all valid movement sequences (e.g., "NNEESS") from start to treasure based on input constraints.</li>
+    <li>Handled invalid input gracefully using exception checks and CLI argument validation.</li>
+    <li>Modular design using a separate header file for function declarations.</li>
+  </ul>
+  <p><strong>Technologies:</strong> C++, Recursion, CLI, Backtracking, Pathfinding</p>
+  <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/Robot" target="_blank">View C++ Code</a>
+</div>
+
+
+<div class="project">
+  <h3>To-Do List Web App</h3>
+  <p>A responsive, browser-based task manager with dark mode, time tracking, and persistent storage. Built from scratch using HTML, CSS, and vanilla JavaScript with no external frameworks.</p>
+  <ul>
+    <li>Added task input with optional start and due time fields, enhanced with Flatpickr time pickers.</li>
+    <li>Stored tasks in `localStorage` so they persist between sessions without needing a backend.</li>
+    <li>Sorted tasks in real-time based on due time using `localeCompare()`.</li>
+    <li>Implemented light/dark mode toggle and saved user preference across reloads.</li>
+    <li>Used custom icons for task completion (✔) and deletion (✖), styled via CSS for intuitive UX.</li>
+    <li>Formatted time in user-friendly AM/PM format and showed both start and due times below each task.</li>
+    <li>Handled keyboard interaction, allowing users to add tasks by pressing Enter.</li>
+  </ul>
+  <p><strong>Technologies:</strong> JavaScript, HTML5, CSS3, DOM Manipulation, LocalStorage, Flatpickr</p>
+  <iframe src="projects/todo-app/index.html" width="400" height="700" style="border:none;" loading="lazy"></iframe>
+  <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/todo-app" target="_blank">View JS Code</a>
+</div>
+
+
+<div class="project">
+  <h3>Smart Command Line Assistant (C++)</h3>
+  <p>A Mac-compatible command-line assistant that responds to natural language commands for setting reminders, journaling, and launching applications. Built to work offline using system APIs and multithreading.</p>
+  <ul>
+    <li>Parsed commands like <code>remind me to...</code>, <code>add to journal:</code>, and <code>open [App]</code> from user input in real time.</li>
+    <li>Used multithreading to run a reminder-checking loop while still listening for new commands.</li>
+    <li>Displayed and played macOS notifications at specified times using `osascript` and `afplay`.</li>
+    <li>Saved reminders in `reminders.txt` and journal entries in `journal.txt` using file I/O.</li>
+    <li>Handled recurring (daily) reminders versus one-time entries with automatic cleanup.</li>
+    <li>Launched apps via terminal commands (`open -a`) for productivity tools like Notes or Safari.</li>
+    <li>Included colorful terminal output for better UX and easier debugging.</li>
+  </ul>
+  <p><strong>Technologies:</strong> C++, Mac Terminal APIs, File I/O, Multithreading, Natural Language Parsing</p>
+  <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/smart-assistant" target="_blank">View C++ Code</a>
+</div>
+
+
+<div class="project">
   <h3>NBA Stats Explorer</h3>
-  <p>
-    An interactive Python-based tool for analyzing NBA player and team statistics. Built from scratch to showcase data science, sports analytics, and Python programming.
-    <ul>
-      <li><strong>Used Python & pandas</strong> to read, clean, and process real NBA data from CSV files.</li>
-      <li><strong>Implemented features</strong> to filter stats by player, team, or position and sort by various metrics (points, assists, rebounds, etc.).</li>
-      <li><strong>Built custom comparison tools</strong> that allow users to analyze multiple players side-by-side.</li>
-      <li><strong>Generated visualizations</strong> using Matplotlib to display trends and performance over time.</li>
-      <li><strong>Applied object-oriented design</strong> to keep the code modular, maintainable, and reusable.</li>
-      <li><strong>Designed for usability</strong> with a terminal-based UI and clear prompts for user inputs.</li>
-    </ul>
-  </p>
+  <p>An interactive Python tool for analyzing NBA player and team statistics. Designed to showcase real-world data handling, visualization, and comparison using actual performance data.</p>
+  <ul>
+    <li>Loaded real NBA data from CSV files and cleaned it using pandas.</li>
+    <li>Allowed users to filter by player, team, position, or stat category (points, rebounds, assists, etc.).</li>
+    <li>Built interactive stat comparison between multiple players, enabling side-by-side metric analysis.</li>
+    <li>Displayed line and bar charts using Matplotlib to visualize trends over time.</li>
+    <li>Created modular Python classes and functions for maintainable code structure.</li>
+    <li>Used terminal-based input prompts for a clean and lightweight interface.</li>
+  </ul>
+  <p><strong>Technologies:</strong> Python, pandas, Matplotlib, Data Cleaning, Visualization</p>
   <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/NBAStatsExplorer" target="_blank">View Python Code</a>
 </div>
 
+
 <div class="project">
   <h3>Password Vault Generator</h3>
-  <p>A C++ command-line tool that securely generates and stores strong passwords. It uses XOR-based encryption and simple file-based storage to create an offline password vault system.</p>
+  <p>A command-line tool written in C++ that generates secure passwords and stores them in an encrypted offline vault. Designed for users who want simple, local password management without cloud exposure.</p>
   <ul>
-    <li><strong>Custom Length Password Generation:</strong> Configurable password lengths (8–128) using digits, symbols, upper and lowercase letters.</li>
-    <li><strong>XOR Encryption:</strong> Encrypts data with a user-defined master password.</li>
-    <li><strong>Secure Storage:</strong> Stores entries in an encrypted vault file (<code>vault.txt</code>).</li>
-    <li><strong>Vault Reader:</strong> Decrypts and displays vault contents with the correct master password.</li>
+    <li>Built a password generator that enforces strong complexity: digits, symbols, uppercase, and lowercase letters.</li>
+    <li>Allowed users to specify custom password lengths between 8 and 128 characters.</li>
+    <li>Used an XOR-based encryption algorithm to secure password entries with a master password.</li>
+    <li>Formatted vault entries with fields for purpose, username/email, and generated password.</li>
+    <li>Encrypted and saved the vault entries into a local file (`vault.txt`) using file output streams.</li>
+    <li>Built a companion vault reader that decrypts and displays entries with the correct master password.</li>
+    <li>Handled user interaction via console with prompts for each field and secure master key input.</li>
   </ul>
-  <p><strong>Technologies:</strong> C++, File I/O, Random Number Generation, XOR Bitwise Encryption</p>
+  <p><strong>Technologies:</strong> C++, File I/O, Random Generation, XOR Bitwise Encryption</p>
   <a class="button" href="https://github.com/mbanga11/portfolio-website/tree/main/projects/PasswordMaker" target="_blank">View C++ Code</a>
 </div>
+
 
 
 
